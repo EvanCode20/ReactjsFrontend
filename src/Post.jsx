@@ -12,11 +12,12 @@ const Post = ({description,subject,userId}) => {
                 <li className="list" key={postId++}>
                     <p className="username">{userId}</p>
                     <div className="my-class">
-                        <p>Subject</p>
+                   
+                        <p className="underline">Subject</p>
                         {subject}
                     
                     
-                        <p>Description</p>
+                        <p className="underline">Description</p>
                         {description}
                     </div>
                     
