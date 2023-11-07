@@ -3,7 +3,7 @@ import { useAuth } from './AuthContext';
 
 export const Login = (props) => {
   
-   const { token, login } = useAuth();
+   const { login } = useAuth();
    const [username, setUsername] = useState('');
    const [password, setPass] = useState('');
    
@@ -26,7 +26,7 @@ export const Login = (props) => {
     })
       .then((response) => response.json())
       .then((responseData) => {
-        login(responseData.token);
+        login(responseData.token,username);
         props.onFormSwitch('dashboard');
         console.log(responseData);
       })

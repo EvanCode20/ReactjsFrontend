@@ -1,11 +1,12 @@
 import React from 'react';
-
+import { useAuth } from './AuthContext';
 
 
 export const CreatePost = () => {
+    const {user} = useAuth();
   return (
     <div>
-      <h1>Create a post!</h1>
+      
     </div>
   );
 }

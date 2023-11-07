@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import { useAuth } from './AuthContext';
 
 export const Register = (props) => {
 
+  const { login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPass] = useState('');
 
@@ -23,6 +25,7 @@ export const Register = (props) => {
     })
       .then((response) => response.json())
       .then((responseData) => {
+        login(responseData.token,username);
         props.onFormSwitch('dashboard');
         console.log(responseData);
       })
