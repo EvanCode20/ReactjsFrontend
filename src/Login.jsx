@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-
+import { useAuth } from './AuthContext';
 
 export const Login = (props) => {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+  
+   const { token, login } = useAuth();
    const [username, setUsername] = useState('');
    const [password, setPass] = useState('');
    
@@ -13,7 +14,7 @@ export const Login = (props) => {
     console.log(password);
     
     const endPoint = 'https://localhost:3001/api/user/login'; 
-    const data = {username : "user2" , password : "password2"}; 
+    const data = {username : username , password : password}; 
 
   
     fetch(endPoint, {
@@ -25,6 +26,7 @@ export const Login = (props) => {
     })
       .then((response) => response.json())
       .then((responseData) => {
+        login(responseData.token);
         props.onFormSwitch('dashboard');
         console.log(responseData);
       })

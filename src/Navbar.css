@@ -1,15 +1,15 @@
 .nav {
-    
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    gap: 20rem;
+    gap: 5rem;
     padding: 0 1rem;
     position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
+    
   }
   
   .site-title {
