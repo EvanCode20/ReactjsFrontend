@@ -1,15 +1,78 @@
 import React, {useState} from 'react';
 import { useAuth } from './AuthContext';
-
+import ErrorComponent from './ErrorComponent';
 
 export const CreatePost = () => {
     const {token ,user} = useAuth();
     const [subject, setSubject] = useState('');
     const [description, setDescription] = useState('');
-  
-   
+    const [error, setError] = useState('');
+
+   function isSubjectValid(s)
+   {
+    let errorMsg = "";
+    const minLength = 3;
+    const maxLength = 50;
+
+    if (s.length < minLength) {
+        errorMsg = "Subject is too short"
+        return errorMsg; 
+      }
+    
+      if (s.length > maxLength) {
+        errorMsg = "Subject is too long"
+        return errorMsg; 
+      }
+
+      // All checks passed, subject is valid
+    errorMsg = null
+    return errorMsg;
+   }
+
+   function isDescValid(d)
+   {
+    let errorMsg = "";
+    const minLength = 3;
+    const maxLength = 200;
+
+    if (d.length < minLength) {
+        errorMsg = "Description is too short"
+        return errorMsg; 
+      }
+    
+      if (d.length > maxLength) {
+        errorMsg = "Description is too long"
+        return errorMsg; 
+      }
+
+      // All checks passed, description is valid
+    errorMsg = null
+    return errorMsg;
+   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    let validSubject = false;
+    let validDesc = false;
+
+    if(isSubjectValid(subject) == null)
+    {
+        validSubject = true;
+    }
+    else{
+        setError(isSubjectValid(subject));
+    }
+
+
+    if(isDescValid(description) == null){
+        validDesc = true;
+    }
+    else{
+        setError(isDescValid(description));
+    }
+
+    if(validSubject && validDesc){
     
     
     const endPoint = 'https://localhost:3001/api/post'; 
@@ -28,11 +91,12 @@ export const CreatePost = () => {
       .then((responseData) => {
         
         console.log(responseData);
+        setError("Post has been created!")
       })
       .catch((error) => {
         console.error('Error:', error);
       });
-
+    }
 
 
     setSubject(''); 
@@ -65,6 +129,7 @@ export const CreatePost = () => {
       <button onClick={handleSubmit}>Create</button> </div>
       </div>
       </form>
+      {<ErrorComponent message={error} />}
     </div>
   );
 }

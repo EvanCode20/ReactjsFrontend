@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import { useAuth } from './AuthContext';
+import ErrorComponent from './ErrorComponent';
 
 export const Login = (props) => {
   
    const { login } = useAuth();
    const [username, setUsername] = useState('');
    const [password, setPass] = useState('');
+   const [error, setError] = useState('');
    
    
+
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(username);
@@ -32,6 +35,7 @@ export const Login = (props) => {
       })
       .catch((error) => {
         console.error('Error:', error);
+        setError("Incorrect login details");
       });
   }
 
@@ -44,6 +48,7 @@ export const Login = (props) => {
           <button name='btnLogin' id='btnLogin' type='submit'> Login </button>
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+        {<ErrorComponent message={error} />}
     </div>
   );
 }
