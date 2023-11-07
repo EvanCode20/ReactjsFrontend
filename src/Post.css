@@ -11,6 +11,7 @@
 
 .username{
     font-size: 30px;
+    margin-left: 20px;
     position: relative;right : 230px;
 }
 
@@ -18,3 +19,12 @@
     text-decoration: underline;
   }
 
+.small-button {
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    padding: 5px 10px;
+    margin: 5px;
+    margin-left: 180px;
+    border-width: 1px;
+  }

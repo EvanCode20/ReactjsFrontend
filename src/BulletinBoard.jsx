@@ -19,7 +19,7 @@ export const BulletinBoard = () => {
     })
       .then((response) => response.json())
       .then((responseData) => {
-       setData(responseData.posts)
+        setData(responseData.posts)
         console.log(responseData);
       })
       .catch((error) => {
@@ -31,7 +31,7 @@ export const BulletinBoard = () => {
   return (
     <div>
         
-      {posts.map((post)=> (
+      {posts.reverse().map((post)=> (
                 <Post
                   description={post.description}
                   subject={post.subject}
