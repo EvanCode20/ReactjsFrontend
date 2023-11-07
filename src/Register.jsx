@@ -62,7 +62,7 @@ export const Register = (props) => {
   
     // Check for uppercase, lowercase, digit, and special character
     if (!hasUppercase || !hasLowercase || !hasDigit || !hasSpecialChar) {
-      errorMsg = "Missing required characters";
+      errorMsg = "Missing required characters (digit,uppercase,lowercase,special)";
       return errorMsg;
     }
   

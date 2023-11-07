@@ -58,8 +58,7 @@ const Post = ({_id,description,subject,userId}) => {
             .then((response) => response.json())
             .then((responseData) => {
               console.log(responseData);
-              // You might want to update your UI or state after a successful deletion
-              // e.g., by removing the post from the `posts` state.
+              
             })
             .catch((error) => {
               console.error('Error:', error);

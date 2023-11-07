@@ -1,5 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 
+/*
+----------------------------------CODE ATTRIBUTION---------------------------------
+Author: FreeCodeCamp
+Code: AuthContext.js
+Link: https://www.freecodecamp.org/news/state-management-with-react-hooks/ 
+*/ 
+
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
